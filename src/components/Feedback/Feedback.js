@@ -18,31 +18,20 @@ class Feedback extends Component {
     neutral: this.props.neutral,
     bad: this.props.bad,
   };
-
-  onPositiveFeedbackClick = () => {
+  onLeaveFeedback = value => {
     this.setState(prevState => ({
-      good: prevState.good + 1,
-    }));
-  };
-
-  onNeutralFeedbackClick = () => {
-    this.setState(prevState => ({
-      neutral: prevState.neutral + 1,
-    }));
-  };
-
-  onNegativeFeedbackClick = () => {
-    this.setState(prevState => ({
-      bad: prevState.bad + 1,
+      [value]: prevState[value] + 1,
     }));
   };
 
   countTotalFeedback = () => {
-    return this.state.good + this.state.neutral + this.state.bad;
+    const { good, neutral, bad } = this.state;
+    return good + neutral + bad;
   };
 
   countPositiveFeedbackPercentage = () => {
-    return (this.state.good / (this.state.good + this.state.bad)) * 100;
+    const { good, bad } = this.state;
+    return (good / (good + bad)) * 100;
   };
 
   render() {
@@ -51,9 +40,8 @@ class Feedback extends Component {
       <div className="App">
         <section className="App-section">
           <FeedbackMarkup
-            onPositiveFeedbackClick={this.onPositiveFeedbackClick}
-            onNeutralFeedbackClick={this.onNeutralFeedbackClick}
-            onNegativeFeedbackClick={this.onNegativeFeedbackClick}
+            options={['good', 'neutral', 'bad']}
+            leaveFeedback={this.onLeaveFeedback}
           />
           {this.countTotalFeedback() > 0 ? (
             <StatisticsMarkup
