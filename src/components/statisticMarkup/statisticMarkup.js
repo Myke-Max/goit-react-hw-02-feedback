@@ -1,4 +1,5 @@
 import React from 'react';
+import s from './statisticMarkup.module.css';
 
 const statisticMarkup = ({
   positiveFeedbackValue,
@@ -9,22 +10,21 @@ const statisticMarkup = ({
 }) => {
   return (
     <>
-      <h2 className="statistics_title">Statistics</h2>
-      <ul className="statistics_list">
-        <li className="statistics_item">
-          <span className="statistics_value">good:{positiveFeedbackValue}</span>
+      <h2 className={s.statistics_title}>Statistics</h2>
+      <div className={s.info_wrapper}>
+        <span className={s.statistics_value}>Total: {totalFeedback} </span>
+        <span className={s.statistics_value}>Positive feedback:{positiveFeedbackPercentage}%</span>
+      </div>
+
+      <ul className={s.statistics_list}>
+        <li className={s.statistics_item}>
+          <span className={s.statistics_value}>bad:{badFeedbackValue}</span>
         </li>
-        <li className="statistics_item">
-          <span className="statistics_value">neutral:{neutralFeedbackValue} </span>
+        <li className={s.statistics_item}>
+          <span className={s.statistics_value}>neutral:{neutralFeedbackValue} </span>
         </li>
-        <li className="statistics_item">
-          <span className="statistics_value">bad:{badFeedbackValue}</span>
-        </li>
-        <li className="statistics_item">
-          <span className="statistics_value">Total: {totalFeedback} </span>
-        </li>
-        <li className="statistics_item">
-          <span className="statistics_value">Positive feedback:{positiveFeedbackPercentage}%</span>
+        <li className={s.statistics_item}>
+          <span className={s.statistics_value}>good:{positiveFeedbackValue}</span>
         </li>
       </ul>
     </>

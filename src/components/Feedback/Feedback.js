@@ -2,7 +2,7 @@ import { Component } from 'react';
 import FeedbackMarkup from '../feedbackMarkup';
 import StatisticsMarkup from '../statisticMarkup';
 import Notification from '../notification';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 class Feedback extends Component {
   static defaultProps = {
@@ -11,7 +11,11 @@ class Feedback extends Component {
     bad: 0,
   };
 
-  static propTypes = {};
+  static propTypes = {
+    good: PropTypes.number.isRequired,
+    neutral: PropTypes.number.isRequired,
+    bad: PropTypes.number.isRequired,
+  };
 
   state = {
     good: this.props.good,
@@ -40,7 +44,7 @@ class Feedback extends Component {
       <div className="App">
         <section className="App-section">
           <FeedbackMarkup
-            options={['good', 'neutral', 'bad']}
+            options={['bad', 'neutral', 'good']}
             leaveFeedback={this.onLeaveFeedback}
           />
           {this.countTotalFeedback() > 0 ? (

@@ -1,9 +1,10 @@
 import React from 'react';
+import s from './notification.module.css';
 
 const Notification = ({ message }) => {
   return (
     <>
-      <p>{message}</p>
+      <p className={s.notification}>{message}</p>
     </>
   );
 };
